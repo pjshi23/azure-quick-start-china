@@ -1,0 +1,27 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "username"
+    },
+    "adminPassword": {
+      "value": "password!"
+    },
+    "userImageStorageAccountName": {
+      "value": "myStorageAccount"
+    },
+    "osDiskVhdUri": {
+      "value": "http://ci21c7135add2.blob.core.chinacloudapi.cn/vhds/cid4b28112a1.vhd"
+    },
+    "dnsLabelPrefix": {
+      "value": "uniqueDNS"
+    },
+    "osType": {
+      "value": "Linux"
+    },
+    "vmSize": {
+      "value": "Standard_D2"
+    }
+  }
+}
