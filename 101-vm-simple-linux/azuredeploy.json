@@ -43,12 +43,12 @@
     "addressPrefix": "10.0.0.0/16",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
-    "storageAccountType": "premium_LRS",
+    "storageAccountType": "Standard_LRS",
     "publicIPAddressName": "myPublicIP",
     "publicIPAddressType": "Dynamic",
     "vmStorageAccountContainerName": "vhds",
     "vmName": "MyUbuntuVM",
-    "vmSize": "Standard_DS1",
+    "vmSize": "Standard_D1",
     "virtualNetworkName": "MyVNET",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
@@ -177,7 +177,7 @@
         },
         "diagnosticsProfile": {
           "bootDiagnostics": {
-            "enabled": "false",
+            "enabled": "true",
             "storageUri": "[concat('http://',variables('storageAccountName'),'.blob.core.chinacloudapi.cn')]"
           }
         }
