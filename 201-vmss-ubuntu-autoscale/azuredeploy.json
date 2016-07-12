@@ -91,7 +91,7 @@
       "publisher": "Canonical",
       "offer": "UbuntuServer",
       "sku": "[parameters('ubuntuOSVersion')]",
-      "version": "14.04.3-LTS"
+      "version": "latest"
     },
     "imageReference": "[variables('osType')]",
     "computeApiVersion": "2016-03-30",
