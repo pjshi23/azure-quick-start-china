@@ -14,7 +14,7 @@
       "defaultValue": "14.04.3-LTS",
       "allowedValues": [
         "15.10",
-        "14.04.4-LTS"
+        "14.04.3-LTS"
       ],
       "metadata": {
         "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version. Allowed values are: 15.10, 14.04.4-LTS."
@@ -91,7 +91,7 @@
       "publisher": "Canonical",
       "offer": "UbuntuServer",
       "sku": "[parameters('ubuntuOSVersion')]",
-      "version": "latest"
+      "version": "14.04.3-LTS"
     },
     "imageReference": "[variables('osType')]",
     "computeApiVersion": "2016-03-30",
