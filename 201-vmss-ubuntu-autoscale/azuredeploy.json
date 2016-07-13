@@ -277,7 +277,8 @@
                   "protectedSettings": {
                     "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
                     "storageAccountKey": "[listkeys(variables('accountid'), variables('storageApiVersion')).key1]",
-                    "storageAccountEndPoint": "https://core.chinacloudapi.cn"
+                    "storageAccountEndPoint": "https://core.chinacloudapi.cn",
+                    "endpoint": "table.core.chinacloudapi.cn"
                   }
                 }
               }
