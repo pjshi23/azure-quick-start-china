@@ -30,12 +30,6 @@
       "metadata": {
         "description": "Name of the VM"
       }
-    },
-      "virtualNetworkName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the VNet"
-      }
     }
   },
   "variables": {
@@ -45,7 +39,7 @@
     "subnetPrefix": "10.0.0.0/24",
     "publicIPAddressName": "specializedVMPublicIP",
     "publicIPAddressType": "Dynamic",
-   // "virtualNetworkName": "specializedVMVNET",
+    "virtualNetworkName": "specializedVMVNET",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
     "nicName": "specializedVMNic"
