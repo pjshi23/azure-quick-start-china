@@ -13,6 +13,9 @@
     },
     "vmName": {
       "value": "vm-name"
+    },
+    "virtualNetworkName":{
+      "value": "vnet-name"
     }
   }
 }
