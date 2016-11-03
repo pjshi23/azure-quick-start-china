@@ -31,33 +31,35 @@ Future work:
 The webServer configuration adds the Windows Features to support IIS and manages the Windows Firewall settings to allow access to the default site.  To verify, open the Public FQDN of the deployment in a browser and confirm the default IIS page.
 
 ## To clone the module to your local machine from Git Shell
-    
+
 	git clone https://github.com/mgreenegit/ARM-ScaleSetmanagedbyAADSC
-    
+
 ## From Azure PowerShell
 This commands assumes you want to either create a new Resource Group named "TestScaleSet0001", or deploy in to an existing Resource Group by that name.
-    
+
 	Login-AzureRmAccount
-	
+
 	$ResourceGroupName = 'TestScaleSets0001'
-	
+
 	$AccountName = 'myAutomationAccount'
-	
-	New-AzureRmResourcegroup -Name $ResourceGroupName -Location 'East US' -Verbose
-	
-	New-AzureRMAutomationAccount -ResourceGroupName $ResourceGroupName -Name $AccountName -Location 'East US 2' -Plan Free -Verbose
-	
+
+	New-AzureRmResourcegroup -Name $ResourceGroupName -Location 'China North' -Verbose
+
+    assets/README-79b90.png
+
+    New-AzureRMAutomationAccount -ResourceGroupName $ResourceGroupName -Name $AccountName -Location 'China East' -Plan Free -Verbose
+
 	$RegistrationInfo = Get-AzureRmAutomationRegistrationInfo -ResourceGroupName $ResourceGroupName -AutomationAccountName $AccountName
-	
+
     $NewGUID = [system.guid]::newguid().guid
-    
+
 	New-AzureRmResourceGroupDeployment -Name TestDeployment -ResourceGroupName $ResourceGroupName -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -registrationKey ($RegistrationInfo.PrimaryKey | ConvertTo-SecureString -AsPlainText -Force) -registrationUr $RegistrationInfo.Endpoint -automationAccountName $AccountName -jobid $NewGUID -Verbose
-	
+
 ## To remove registered nodes from Azure Automation DSC if you are not ready to delete the account
 Replace with values for your account.  The resource group in this case refers to the Azure Automation instance.
 
 	Login-AzureRmAccount
-	
+
 	Get-AzureRMAutomationDSCNode -ResourceGroupName 'YOUR_RG_HERE' -AutomationAccountName 'YOUR_ACCOUNT_NAME_HERE' | ? Name -like YOUR_NAME_PATTERN_HERE-* | Unregister-AzureRmAutomationDscNode -Force
 
 ## Prior Examples
