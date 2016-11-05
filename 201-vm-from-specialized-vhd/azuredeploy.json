@@ -22,7 +22,7 @@
       "type": "string",
       "defaultValue": "Standard_D2",
       "metadata": {
-        "description":"vm size"
+        "description":"vm size：Standard_A0/Standard_A1/Standard_A2/Standard_A3/Standard_A5/Standard_A4/Standard_A6/Standard_A7Basic_A0/Basic_A1/Basic_A2/Basic_A3/Basic_A4Standard_D1_v2/Standard_D2_v2Standard_D3_v2/Standard_D4_v2/Standard_D5_v2/Standard_D11_v2/Standard_D12_v2/Standard_D13_v2/Standard_D14_v2/Standard_D15_v2/Standard_F1/Standard_F2/Standard_F4/Standard_F8/Standard_F16/Standard_DS1/Standard_DS2/Standard_DS3/Standard_DS4/Standard_DS11/Standard_DS12/Standard_DS13/Standard_DS14/Standard_D1/Standard_D2/Standard_D3/Standard_D4/Standard_D11/Standard_D12/Standard_D13/Standard_D14"
       }
     },
     "vmName": {
