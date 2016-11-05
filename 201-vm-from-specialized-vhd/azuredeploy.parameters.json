@@ -16,6 +16,15 @@
     },
     "virtualNetworkName":{
       "value": "vnet-name"
-    }
+    },
+    "subnetName":{
+      "value": "subnet-name"
+    },
+    "addressPrefix":{
+      "value": "addressPrefix"
+    },
+    "subnetPrefix":{
+      "value": "subnetPrefix"
+    }   
   }
 }
