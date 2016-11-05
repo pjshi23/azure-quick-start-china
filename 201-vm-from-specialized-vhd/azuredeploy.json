@@ -22,7 +22,11 @@
       "type": "string",
       "defaultValue": "Standard_D2",
       "metadata": {
+<<<<<<< HEAD
         "description":"asd"
+=======
+        "description": "Size of the VM"
+>>>>>>> parent of 1067671... enable set network parameter
       }
     },
     "vmName": {
@@ -36,34 +40,18 @@
       "metadata": {
         "description": "Name of the VNet"
       }
-    },
-     "subnetName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the SubNet"
-      }
-    },
-      "addressPrefix": {
-      "type": "string",
-      "metadata": {
-        "description": "example:10.0.0.0/16 "
-      },
-      "subnetPrefix": {
-      "type": "string",
-      "metadata": {
-        "description": "example:10.0.0.0/24"
-      }
+    }
   },
   "variables": {
     "api-version": "2015-06-15",
-    //"addressPrefix": "10.0.0.0/16",
-    // "subnetName": "Subnet",
-    //"subnetPrefix": "10.0.0.0/24",
+    "addressPrefix": "10.0.0.0/16",
+    "subnetName": "Subnet",
+    "subnetPrefix": "10.0.0.0/24",
     "publicIPAddressName": "specializedVMPublicIP",
     "publicIPAddressType": "Dynamic",
     //"virtualNetworkName": "specializedVMVNET",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
-    "subnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('subnetName'))]",
+    "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
     "nicName": "specializedVMNic"
   },
   "resources": [
@@ -75,14 +63,14 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[parameters('addressPrefix')]"
+            "[variables('addressPrefix')]"
           ]
         },
         "subnets": [
           {
-            "name": "[parameters('subnetName')]",
+            "name": "[variables('subnetName')]",
             "properties": {
-              "addressPrefix": "[parameters('subnetPrefix')]"
+              "addressPrefix": "[variables('subnetPrefix')]"
             }
           }
         ]
