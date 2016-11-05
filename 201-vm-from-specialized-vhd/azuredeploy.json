@@ -23,7 +23,11 @@
       "defaultValue": "Standard_D2",
       "metadata": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "description":"asd"
+=======
+        "description": "Size of the VM"
+>>>>>>> parent of 1067671... enable set network parameter
 =======
         "description": "Size of the VM"
 >>>>>>> parent of 1067671... enable set network parameter
