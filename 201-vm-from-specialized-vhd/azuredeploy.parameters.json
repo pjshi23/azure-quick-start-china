@@ -20,11 +20,11 @@
     "subnetName":{
       "value": "subnet-name"
     },
-     "addressPrefix":{
+    "addressPrefix":{
       "value": "addressPrefix"
     },
-      "subnetPrefix":{
+    "subnetPrefix":{
       "value": "subnetPrefix"
-    }
+    }   
   }
 }
