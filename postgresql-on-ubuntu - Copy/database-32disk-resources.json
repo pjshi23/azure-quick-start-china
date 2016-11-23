@@ -263,7 +263,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 16,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk17.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -273,7 +273,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 17,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk18.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -283,7 +283,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 18,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk19.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -293,7 +293,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 19,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk20.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -303,7 +303,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 20,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk21.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -313,7 +313,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 21,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk22.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -323,7 +323,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 22,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk23.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -333,7 +333,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 23,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk24.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -343,7 +343,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 24,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk25.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -353,7 +353,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 25,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk26.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -363,7 +363,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 26,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk27.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -373,7 +373,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 27,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk28.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -383,7 +383,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 28,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk29.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -393,7 +393,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 29,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk30.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -403,7 +403,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 30,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk31.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -413,7 +413,7 @@
               "diskSizeGB": "[parameters('machineSettings').diskSize]",
               "lun": 31,
               "vhd": {
-                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk16.vhd')]"
+                "Uri": "[concat('http://', parameters('storageSettings').name, parameters('storageSettings').map[copyindex()],'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'), copyindex(),'-datadisk32.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
