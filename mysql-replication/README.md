@@ -1,4 +1,4 @@
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fmysql-replication%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdafoyiming%2Fazure-quick-start-china%2Fmaster%2Fmysql-replication%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 <a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fmysql-replication%2Fazuredeploy.json" target="_blank">
@@ -22,7 +22,7 @@ You can deploy the template with Azure Portal, or PowerShell, or Azure cross pla
 **Default deployment**
 * Open Azure Powershell console, and log in by running Login-AzureRmAccount command.
 ```sh
-> Login-AzureRmAccount 
+> Login-AzureRmAccount
 ```
 * Next, create a resource group:
 ```sh
@@ -120,7 +120,7 @@ mysql> show slave status\G;
 
 ### How to backup databases to Azure blob storage
 * There are several ways to
-take mysql backups as shown at <a href="https://dev.mysql.com/doc/refman/5.6/en/backup-and-recovery.html" >Mysql Backup and Recovery</a>. The example below shows mysql dump from the slave. 
+take mysql backups as shown at <a href="https://dev.mysql.com/doc/refman/5.6/en/backup-and-recovery.html" >Mysql Backup and Recovery</a>. The example below shows mysql dump from the slave.
 ```sh
 # Create backups directory if not already created (modify folder as required)
 >mkdir  /home/admin/backups/
@@ -134,7 +134,7 @@ take mysql backups as shown at <a href="https://dev.mysql.com/doc/refman/5.6/en/
 > sudo yum install npm -y
 > sudo npm install -g azure-cli
 
-# Login to azure account using azure cli 
+# Login to azure account using azure cli
 > azure login
 
 # Environment settings for your system
@@ -167,11 +167,10 @@ take mysql backups as shown at <a href="https://dev.mysql.com/doc/refman/5.6/en/
 
 # Move the backup to Azure Blob storage
 > azure storage blob upload $image_to_upload $container_name $blob_name
- 
+
 ```
 
 License
 ----
 
 MIT
-
