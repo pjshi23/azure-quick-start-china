@@ -117,7 +117,7 @@ on the slave:
 ```sh
 mysql> show slave status\G;
 ```
-
+![GTID](assets/README-8842f.png)
 ### How to backup databases to Azure blob storage
 * There are several ways to
 take mysql backups as shown at <a href="https://dev.mysql.com/doc/refman/5.6/en/backup-and-recovery.html" >Mysql Backup and Recovery</a>. The example below shows mysql dump from the slave.
