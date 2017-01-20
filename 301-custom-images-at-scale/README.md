@@ -4,16 +4,28 @@
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-This template deploys custom images at scale with options to use VM Scale Sets, regular VMs, or regular VMs in an availability set.  It is designed so that it can be called from other templates, and you can build on top of it.  The individual VMs that get created do not have public IPs, but a machine that can be used as a jump box is available.  (You can delete the extra machine after deployment, but it is required as part of the process.)
 
-In terms of workflow, this template does the following:
-- Create a deployment that produces the shared objects which will be used in the other pieces.  This includes the VNet, and the storage accounts for the final VMs to be deployed. (shared-resources.json)
-- Create the objects necessary for a VM to use in moving the image around, which can also function as a jump box.
-- Create a deployment that runs the download script to get the image onto the VM. (download.json, download.sh)
-- Create a loop of deployments (that run in series, not parallel) which run the upload script to push the image into each of the created storage accounts. (upload.json, upload.sh)
-- Start the final VM deployments.
 
-For the final VM deployments, the intial option you pass the template determines which design it will use for the final VMs.
-- VMSS - This will create the VMs as a series of VM scale sets.  (final_VMSS.json)
-- Single - This will create the VMs as a series of individual VMs.  You can further customize them in the template if needed.  (final_Single.json, vm_baseSingle.json)
-- SingleAV - This will create the VMs as a series of individual VMs that are all within an availability set.  You cannot exceed 100 total VMs if using this method.  (final_SingleAV.json, vm_baseSingleAV.json)
+
+这个模板是用来批量部署自定义image的。可以支持用scalesets/单独的instacnce/instance in avset等方式。
+
+先决条件：
+
+参考这个文档抓取image,保存template并记录下image url。
+
+根据parameter的提示填上image url和选择批量部署的方式。
+
+注：
+
+普通的批量部署arm template不支持多storage account。本template是为了多存储账号和多VM的情况下编写。
+
+template原理：
+
+创建transfer VM来下载原storage account里的image vhd。通过blobxfer上传到多个storage account里。
+
+根据storage account里的VHD部署VM。
+
+由于牵涉VHD的上传下载，部署时间视storage account的个数会成正比。
+
+之后会考虑优化。
+
