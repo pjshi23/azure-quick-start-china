@@ -15,7 +15,7 @@ azure config mode arm
 sa_domain=$(echo "$1" | cut -f3 -d/)
 sa_name=$(echo $sa_domain | cut -f1 -d.)
 container_name=$(echo "$1" | cut -f4 -d/)
-blob_name=$(echo "$1" | cut -f5 -d/)
+blob_name=$(echo "$1" | cut -f5-9 -d/)
 
 echo "sa name, container name, blob name:"
 echo $sa_name
@@ -27,7 +27,8 @@ attempts=0
 response=1
 while [ $response -ne 0 -a $attempts -lt 5 ]
 do
-  blobxfer $sa_name $container_name /mnt/ --remoteresource $blob_name --storageaccountkey $2 --download --no-computefilemd5
+  blobxfer $sa_name $container_name /mnt/ --remoteresource $blob_name --storageaccountkey $2 --download --no-computefilemd5 --endpoint core.chinacloudapi.cn
+
   response=$?
   attempts=$((attempts+1))
 done
