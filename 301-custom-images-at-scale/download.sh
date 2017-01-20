@@ -8,7 +8,8 @@ apt-get -y install python3-pip libssl-dev libffi-dev npm
 pip3 install blobxfer --upgrade
 blobxfer --version
 ln -s /usr/bin/nodejs /usr/bin/node
-npm install -g azure-cli
+npm --registry https://registry.npm.taobao.org install -g azure-cli
+azure telemetry --disable
 azure config mode arm
 
 sa_domain=$(echo "$1" | cut -f3 -d/)
