@@ -62,8 +62,8 @@
         },
         "parameters": {
           "clusterName": { "value": "[concat(parameters('uniquePrefix'), padLeft(copyindex(), 2, '0'))]" },
-          "sourceImageURI": { "value": "[concat('https://',uniqueString(concat(resourceGroup().id, parameters('uniquePrefix'), copyIndex())), parameters('uniquePrefix'),'.blob.core.windows.net/vhds/',parameters('blobName'))]" },
-          "baseVHDURI": { "value": "[concat('https://',uniqueString(concat(resourceGroup().id, parameters('uniquePrefix'), copyIndex())), parameters('uniquePrefix'),'.blob.core.windows.net/vhds/')]" },
+          "sourceImageURI": { "value": "[concat('https://',uniqueString(concat(resourceGroup().id, parameters('uniquePrefix'), copyIndex())), parameters('uniquePrefix'),'.blob.core.chinacloudapi.cn/vhds/',parameters('blobName'))]" },
+          "baseVHDURI": { "value": "[concat('https://',uniqueString(concat(resourceGroup().id, parameters('uniquePrefix'), copyIndex())), parameters('uniquePrefix'),'.blob.core.chinacloudapi.cn/vhds/')]" },
           "instanceCountPerSA": { "value": "[parameters('instanceCountPerSA')]" },
           "vmSize": { "value": "[parameters('vmSize')]" },
           "OSType": { "value": "[parameters('OSType')]" },

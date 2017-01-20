@@ -107,7 +107,7 @@
     "imageLocation": {
       "type": "string",
       "metadata": {
-        "description": "URL of the base custom image, in the format of https://accountname.blob.core.windows.net/container/image.vhd."
+        "description": "URL of the base custom image, in the format of https://accountname.blob.core.chinacloudapi.cn/container/image.vhd."
       }
     },
     "storageAccountKey": {
@@ -141,7 +141,7 @@
     "imagePieces": "[split(parameters('imageLocation'),'/')]",
     "blobName": "[variables('imagePieces')[sub(length(variables('imagePieces')),1)]]",
 
-    "templateLocation": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/301-custom-images-at-scale/",
+    "templateLocation": "https://raw.githubusercontent.com/pjshi23/azure-quick-start-china/master/301-custom-images-at-scale/",
 
     "sharedResourcesTemplateUri ": "[concat(variables('templateLocation'), 'shared-resources.json')]",
     "uploadTemplateUri": "[concat(variables('templateLocation'), 'upload.json')]",
@@ -245,7 +245,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://transfer',parameters('uniquePrefix'),'sa.blob.core.windows.net/transfervm/transfervm.vhd')]"
+              "uri": "[concat('http://transfer',parameters('uniquePrefix'),'sa.blob.core.chinacloudapi.cn/transfervm/transfervm.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -261,7 +261,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
-            "storageUri": "[concat('http://transfer',parameters('uniquePrefix'),'sa.blob.core.windows.net')]"
+            "storageUri": "[concat('http://transfer',parameters('uniquePrefix'),'sa.blob.core.chinacloudapi.cn')]"
           }
         }
       }
