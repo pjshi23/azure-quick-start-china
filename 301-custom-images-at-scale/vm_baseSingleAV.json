@@ -59,7 +59,7 @@
                 "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', parameters('vnetName'), '/subnets/', parameters('subnetName'))]"
               },
                 "publicIPAddress": {
-                    "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat('publicIp-', padLeft(copyIndex(), 2, '0'))]"
+                    "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat('publicIp-', padLeft(copyIndex(), 2, '0')))]"
                 }
             }
           }
