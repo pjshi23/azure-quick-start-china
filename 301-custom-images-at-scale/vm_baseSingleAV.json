@@ -34,7 +34,11 @@
     },
     "adminPassword": {
       "type": "securestring"
-    }
+    },
+      "publicIPDnsName": {
+          "type": "string",
+          "minLength": 1
+      }
   },
   "variables": {
     "availabilitySetName": "[concat(parameters('uniquePrefix'), 'av')]"
@@ -57,11 +61,17 @@
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
                 "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', parameters('vnetName'), '/subnets/', parameters('subnetName'))]"
-              }
+              },
+                "publicIPAddress": {
+                    "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPName'))]"
+                }
             }
           }
         ]
-      }
+      },
+        "dependsOn": [
+            "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPName'))]"
+        ]
     },
     {
       "apiVersion": "2015-05-01-preview",
@@ -109,6 +119,24 @@
           ]
         }
       }
-    }
+    },
+      {
+          "name": "[concat('publicIp-', copyIndex(parameters('copyOffset')))]",
+          "type": "Microsoft.Network/publicIPAddresses",
+          "location": "[resourceGroup().location]",
+          "copy": {
+            "name": "[concat('nicLoop', parameters('clusterName'))]",
+            "count": "[parameters('instanceCountPerSA')]"
+          },
+
+          "apiVersion": "2015-06-15",
+          "dependsOn": [ ],
+          "tags": {
+              "displayName": "publicIP"
+          },
+          "properties": {
+              "publicIPAllocationMethod": "Dynamic"
+          }
+      }
   ]
 }
