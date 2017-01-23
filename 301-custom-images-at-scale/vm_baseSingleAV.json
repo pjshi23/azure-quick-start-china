@@ -34,11 +34,7 @@
     },
     "adminPassword": {
       "type": "securestring"
-    },
-      "publicIPDnsName": {
-          "type": "string",
-          "minLength": 1
-      }
+    }
   },
   "variables": {
     "availabilitySetName": "[concat(parameters('uniquePrefix'), 'av')]"
