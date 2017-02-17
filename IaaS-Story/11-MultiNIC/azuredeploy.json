@@ -244,7 +244,7 @@
             "osDisk": {
               "name": "[concat(variables('dbVMSetting').osdisk,copyindex(1))]",
               "vhd": {
-                "uri": "[concat('http://', parameters('stdStorageName'), '.blob.core.windows.net/', variables('vmStorageAccountContainerName'), '/', variables('dbVMSetting').osdisk, copyindex(1),'.vhd')]"
+                "uri": "[concat('http://', parameters('stdStorageName'), '.blob.core.chinacloudapi.cn/', variables('vmStorageAccountContainerName'), '/', variables('dbVMSetting').osdisk, copyindex(1),'.vhd')]"
               },
               "caching": "ReadWrite",
               "createOption": "FromImage"
@@ -252,7 +252,7 @@
             "dataDisks": [
               {
                 "vhd": {
-                  "uri": "[concat('http://', parameters('prmStorageName'), '.blob.core.windows.net/', variables('vmStorageAccountContainerName'), '/', variables('dbVMSetting').datadisk, copyindex(1),'-1','.vhd')]"
+                  "uri": "[concat('http://', parameters('prmStorageName'), '.blob.core.chinacloudapi.cn/', variables('vmStorageAccountContainerName'), '/', variables('dbVMSetting').datadisk, copyindex(1),'-1','.vhd')]"
                 },
                 "name": "[concat(variables('dbVMSetting').datadisk,copyindex(1),'-data-disk1')]",
                 "diskSizeGB": "127",
@@ -261,7 +261,7 @@
               },
               {
                 "vhd": {
-                  "uri": "[concat('http://', parameters('prmStorageName'), '.blob.core.windows.net/', variables('vmStorageAccountContainerName'), '/', variables('dbVMSetting').datadisk, copyindex(1),'-2','.vhd')]"
+                  "uri": "[concat('http://', parameters('prmStorageName'), '.blob.core.chinacloudapi.cn/', variables('vmStorageAccountContainerName'), '/', variables('dbVMSetting').datadisk, copyindex(1),'-2','.vhd')]"
                 },
                 "name": "[concat(variables('dbVMSetting').datadisk,copyindex(1),'-data-disk2')]",
                 "diskSizeGB": "127",

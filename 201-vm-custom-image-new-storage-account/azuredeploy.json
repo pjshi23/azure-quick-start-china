@@ -219,7 +219,7 @@
           "osDisk": {
             "name": "[concat(variables('vmNames')[0],'-osdisk')]",
             "vhd": {
-              "uri": "[concat('http://', variables('storageAccountName'), '.blob.core.windows.net/', variables('vhdStorageAccountContainerName'), '/',variables('vmNames')[0],'-osdisk' , '.vhd')]"
+              "uri": "[concat('http://', variables('storageAccountName'), '.blob.core.chinacloudapi.cn/', variables('vhdStorageAccountContainerName'), '/',variables('vmNames')[0],'-osdisk' , '.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -254,7 +254,7 @@
               ]
             },
             "protectedSettings": {
-              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ','ImageTransfer.ps1 -SourceImage ',parameters('sourceImageURI'),' -SourceSAKey ', listKeys(resourceId(parameters('sourceStorageAccountResourceGroup'),'Microsoft.Storage/storageAccounts', variables('sourceStorageAccountName')), '2015-06-15').key1, ' -DestinationURI https://', variables('StorageAccountName'), '.blob.core.windows.net/vhds', ' -DestinationSAKey ', listKeys(concat('Microsoft.Storage/storageAccounts/', variables('StorageAccountName')), '2015-06-15').key1)]"
+              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ','ImageTransfer.ps1 -SourceImage ',parameters('sourceImageURI'),' -SourceSAKey ', listKeys(resourceId(parameters('sourceStorageAccountResourceGroup'),'Microsoft.Storage/storageAccounts', variables('sourceStorageAccountName')), '2015-06-15').key1, ' -DestinationURI https://', variables('StorageAccountName'), '.blob.core.chinacloudapi.cn/vhds', ' -DestinationSAKey ', listKeys(concat('Microsoft.Storage/storageAccounts/', variables('StorageAccountName')), '2015-06-15').key1)]"
             }
           }
         }
@@ -290,10 +290,10 @@
             "createOption": "FromImage",
             "caching": "ReadWrite",
             "image": {
-              "uri": "[concat('http://', variables('StorageAccountName'), '.blob.core.windows.net/',variables('vhdStorageAccountContainerName'),'/',parameters('customImageName'))]"
+              "uri": "[concat('http://', variables('StorageAccountName'), '.blob.core.chinacloudapi.cn/',variables('vhdStorageAccountContainerName'),'/',parameters('customImageName'))]"
             },
             "vhd": {
-              "uri": "[concat('http://', variables('StorageAccountName'), '.blob.core.windows.net/',variables('vhdStorageAccountContainerName'),'/',variables('VMNames')[1],'-osdisk.vhd')]"
+              "uri": "[concat('http://', variables('StorageAccountName'), '.blob.core.chinacloudapi.cn/',variables('vhdStorageAccountContainerName'),'/',variables('VMNames')[1],'-osdisk.vhd')]"
             }
           }
         },

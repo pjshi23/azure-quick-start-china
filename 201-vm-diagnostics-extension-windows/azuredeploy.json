@@ -171,7 +171,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
-            "storageUri": "[concat('http://',parameters('vmDiagnosticsStorageAccountName'),'.blob.core.windows.net')]"
+            "storageUri": "[concat('http://',parameters('vmDiagnosticsStorageAccountName'),'.blob.core.chinacloudapi.cn')]"
           }
         }
       },
@@ -196,7 +196,7 @@
             "protectedSettings": {
               "storageAccountName": "[parameters('vmDiagnosticsStorageAccountName')]",
               "storageAccountKey": "[listKeys(variables('accountid'),'2015-05-01-preview').key1]",
-              "storageAccountEndPoint": "https://core.windows.net/"
+              "storageAccountEndPoint": "https://core.chinacloudapi.cn/"
             }
           }
         }

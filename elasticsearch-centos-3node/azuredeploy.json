@@ -224,7 +224,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',variables('storageName'),'.blob.core.windows.net/vhds/','osdisk', copyindex(), '.vhd')]"
+              "uri": "[concat('http://',variables('storageName'),'.blob.core.chinacloudapi.cn/vhds/','osdisk', copyindex(), '.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -235,7 +235,7 @@
               "diskSizeGB": "[variables('dataDiskSize')]",
               "lun": 0,
               "vhd": {
-                "uri": "[concat('http://',variables('storageName'),'.blob.core.windows.net/vhds/',parameters('vmPrefix'), copyindex(), 'dataDisk1.vhd')]"
+                "uri": "[concat('http://',variables('storageName'),'.blob.core.chinacloudapi.cn/vhds/',parameters('vmPrefix'), copyindex(), 'dataDisk1.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -335,7 +335,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',variables('storageName'),'.blob.core.windows.net/vhds/jumpbox-osdisk.vhd')]"
+              "uri": "[concat('http://',variables('storageName'),'.blob.core.chinacloudapi.cn/vhds/jumpbox-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"

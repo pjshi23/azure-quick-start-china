@@ -174,7 +174,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
+              "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.chinacloudapi.cn/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -190,7 +190,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": true,
-            "storageUri": "[concat('http://', parameters('existingdiagnosticsStorageAccountName'), '.blob.core.windows.net')]"
+            "storageUri": "[concat('http://', parameters('existingdiagnosticsStorageAccountName'), '.blob.core.chinacloudapi.cn')]"
           }
         }
       },
@@ -218,7 +218,7 @@
             "protectedSettings": {
               "storageAccountName": "[parameters('existingdiagnosticsStorageAccountName')]",
               "storageAccountKey": "[listkeys(variables('accountid'), variables('apiVersion')).key1]",
-              "storageAccountEndPoint": "https://core.windows.net"
+              "storageAccountEndPoint": "https://core.chinacloudapi.cn"
             }
           }
         }

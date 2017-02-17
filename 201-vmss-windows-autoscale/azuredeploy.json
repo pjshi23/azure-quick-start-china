@@ -284,7 +284,8 @@
                   "protectedSettings": {
                     "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
                     "storageAccountKey": "[listkeys(variables('accountid'), variables('storageApiVersion')).key1]",
-                    "storageAccountEndPoint": "https://core.windows.net"
+                    "storageAccountEndPoint": "https://core.chinacloudapi.cn",
+					"endpoint": "table.core.chinacloudapi.cn"
                   }
                 }
               }

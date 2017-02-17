@@ -244,7 +244,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
              "enabled": "true",
-             "storageUri": "[concat('http://',tolower(parameters('storageAccountName')),'.blob.core.windows.net')]"
+             "storageUri": "[concat('http://',tolower(parameters('storageAccountName')),'.blob.core.chinacloudapi.cn')]"
           }
         }
       }
