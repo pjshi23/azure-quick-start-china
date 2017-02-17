@@ -42,6 +42,12 @@
         "description": "Name of the existing VNET resource group"
       }
     },
+    "availabilitySetName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the existing Availability Set"
+      }
+        },
     "subnetName": {
       "type": "string",
       "metadata": {
@@ -149,7 +155,10 @@
           "enabled": "true",
           "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('diagStorageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
         }
-      }
+      },
+      "availabilitySet": {
+        "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName'))]"
+        }
     }
   }]
 }
