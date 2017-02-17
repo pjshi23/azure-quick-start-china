@@ -60,7 +60,7 @@
     {
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[variables('availabilitySetName')]",
-      "apiVersion": "2016-04-30-preview",
+      "apiVersion": "2016-03-30",
 	"location": "[resourceGroup().location]",
 	"properties": {
 	    "platformFaultDomainCount": "2",
@@ -118,7 +118,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat('myvm', copyIndex())]",
-      "apiVersion": "2016-04-30-preview",
+      "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "copy": {
         "name": "virtualMachineLoop",
