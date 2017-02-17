@@ -320,7 +320,7 @@
             "vhd": {
               "uri": "[concat('http://',parameters('storageAccountName'),'.blob.core.chinacloudapi.cn/',variables('vmStorageAccountContainerName'),'/','osdisk', copyindex(), '.vhd')]"
             },
-            "caching": "None",
+            "caching": "ReadWrite",
             "createOption": "FromImage"
           }
 
