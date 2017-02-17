@@ -124,8 +124,7 @@
       "location": "[resourceGroup().location]",
 	"properties": {
 	    "platformFaultDomainCount": "2",
-	    "platformUpdateDomainCount": "2",
-	    "managed" : "true"
+	    "platformUpdateDomainCount": "2"
 	}
     },
     {
@@ -283,7 +282,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',variables('storageAccountName'),'.blob.core.chinacloudapi.cn/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
+              "uri": "[concat('http://',variables('storageAccountName'),'.blob.core.chinacloudapi.cn/vhds','OSDiskName', copyindex(),'.vhd')]"
             },
             "caching": "None",
             "createOption": "FromImage"
