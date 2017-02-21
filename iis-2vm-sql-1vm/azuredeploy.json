@@ -102,7 +102,7 @@
     "sqlPublicIP": "[concat(parameters('envPrefixName'), 'SqlPip')]",
     "sqlPublicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses', variables('sqlPublicIP'))]",
     "sqlImagePublisher": "MicrosoftSQLServer",
-    "sqlImageOffer": "SQL2014-WS2012R2",
+    "sqlImageOffer": "SQL2012SP3-WS2012R2",
     "sqlImageSku": "Standard",
     "webSrvName": "[concat(parameters('envPrefixName'), 'webSrv')]",
     "webSrvVMSize": "[parameters('webSrvVMSize')]",
