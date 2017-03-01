@@ -61,7 +61,7 @@
     "publicIPAddressType": "Dynamic",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
-    "osDiskVhdName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'),'0-osDisk.vhd')]",
+    "osDiskVhdName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.chinacloudapi.cn/vhds/',variables('vmName'),'osDisk.vhd')]",
     "apiVersion": "2015-06-15"
   },
   "resources": [
