@@ -184,7 +184,7 @@
             "tags": { "displayName": "Frontend - Network Interface Cards" },
             "copy": {
                 "name": "frontendNicCopy",
-                "count": "[parameters('instanceCount').frontend]"
+                "count": "[parameters('instanceCount')]"
             },
             "dependsOn": [
                 "[concat('Microsoft.Network/virtualNetworks/', variables('vnetname'))]"
@@ -212,7 +212,7 @@
             "tags": { "displayName": "Frontend - Virtual Machines" },
             "copy": {
                 "name": "frontendNodeVMCopy",
-                "count": "[parameters('instanceCount').frontend]"
+                "count": "[parameters('instanceCount')]"
             },
             "dependsOn": [
                 "[concat('Microsoft.Compute/availabilitySets/', 'availabilityset-fe')]",
