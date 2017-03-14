@@ -36,8 +36,8 @@
 		],
 			"metadata": {
 			"description": "New CentOS/UbuntuServer Image Offer"
-      }
-    },
+			}
+		},
 		"imageSku": {
 		  "type": "string",
 		  "defaultValue": "7.2",
@@ -126,7 +126,6 @@
       }
     },
 		
-    },
     "variables": {
         "vnetname": "[concat(parameters('deploymentName'),'-vnet')]",
         "storageAccountNamePrefix": "[toLower(replace(parameters('deploymentName'),'-',''))]",
