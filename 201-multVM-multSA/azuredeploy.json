@@ -12,12 +12,12 @@
             "metadata": { "description": "Admin password for the Virtual Machines." }
         },
         "deploymentName": {
-	    	"type": "string",
-            "defaultValue": "hjds",
+            "type": "string",
+            "defaultValue": "stanpeng",
             "metadata": { "description": "Prefix for all names like storage accounts, etc." }
         },
 		"imagePublisher": {
-	     	"type": "string",
+			"type": "string",
 			"defaultValue": "openlogic",
 			"allowedValues": [
 				"Canonical",
@@ -125,8 +125,8 @@
         "description": "Size of the  node."
       }
     },
+
     },
-		
     "variables": {
         "vnetname": "[concat(parameters('deploymentName'),'-vnet')]",
         "storageAccountNamePrefix": "[toLower(replace(parameters('deploymentName'),'-',''))]",
@@ -212,7 +212,7 @@
                 "[concat('Microsoft.Network/networkInterfaces/', concat('nic-fe-', copyIndex()))]"
             ],
             "properties": {
-                "hardwareProfile": { "vmSize": "[parameters('nodeSize')]"},
+                "hardwareProfile": { "vmSize": "Standard_A0" },
                 "networkProfile": { "networkInterfaces": [ { "id": "[resourceId('Microsoft.Network/networkInterfaces', concat('nic-fe-', copyIndex()))]" } ] },
                 "availabilitySet": { "id": "[resourceId('Microsoft.Compute/availabilitySets', 'availabilityset-fe')]" },
                 "osProfile": {
@@ -224,16 +224,17 @@
                     }
                 },
                 "storageProfile": {
-                    "imageReference": {
+                    "imageReference": {						
 						"publisher": "[parameters('imagePublisher')]",
 						"offer": "[parameters('imageOffer')]",
 						"sku": "[parameters('imageSku')]",
 						"version": "latest"
+
                     },
                     "osDisk": {
                         "name": "[concat('fe-', copyIndex(), '-osdisk')]",
                         "vhd": {
-                            "uri": "[concat('http://', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]), 'blob.core.chinacloudapi.cn/', 'vhds', '/',  concat('fe', '-', copyIndex()), '-osdisk.vhd') ]"
+                            "uri": "[concat('http://', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]), '.blob.core.windows.net/', 'vhds', '/',  concat('fe', '-', copyIndex()), '-osdisk.vhd') ]"
                         },
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
