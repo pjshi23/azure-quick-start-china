@@ -4,7 +4,7 @@
     "parameters": {
         "adminUsername": {
             "type": "string",
-            "defaultValue": "chgeuer",
+            "defaultValue": "stan",
             "metadata": { "description": "Admin user name for the Virtual Machines." }
         },
         "adminPassword": {
@@ -50,7 +50,7 @@
         },
 		"imageSku": {
 		  "type": "string",
-		  "defaultValue": "7.2",
+		  "defaultValue": "6.8",
 		  "allowedValues": [
 			"16.04.0-LTS",
 			"6.8",
@@ -130,7 +130,7 @@
 				"Standard_GS4",
 				"Standard_GS5"
       ],
-      "defaultValue": "Standard_DS2_v2",
+      "defaultValue": "Standard_D1_v2",
       "metadata": {
         "description": "Size of the  node."
       }
@@ -220,7 +220,7 @@
                 "[concat('Microsoft.Network/networkInterfaces/', concat('nic-fe-', copyIndex()))]"
             ],
             "properties": {
-                "hardwareProfile": { "vmSize": "Standard_A0" },
+                "hardwareProfile": { "vmSize": "[parameters('nodeSize')]" },
                 "networkProfile": { "networkInterfaces": [ { "id": "[resourceId('Microsoft.Network/networkInterfaces', concat('nic-fe-', copyIndex()))]" } ] },
                 "availabilitySet": { "id": "[resourceId('Microsoft.Compute/availabilitySets', 'availabilityset-fe')]" },
                 "osProfile": {
@@ -242,7 +242,7 @@
                     "osDisk": {
                         "name": "[concat('fe-', copyIndex(), '-osdisk')]",
                         "vhd": {
-                            "uri": "[concat('http://', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]), '.blob.core.windows.net/', 'vhds', '/',  concat('fe', '-', copyIndex()), '-osdisk.vhd') ]"
+                            "uri": "[concat('http://', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]), '.blob.core.chinacloudapi.cn/', 'vhds', '/',  concat('fe', '-', copyIndex()), '-osdisk.vhd') ]"
                         },
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
