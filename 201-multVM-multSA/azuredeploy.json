@@ -12,12 +12,12 @@
             "metadata": { "description": "Admin password for the Virtual Machines." }
         },
         "deploymentName": {
-            "type": "string",
+	    	"type": "string",
             "defaultValue": "hjds",
             "metadata": { "description": "Prefix for all names like storage accounts, etc." }
-        }
+        },
 		"imagePublisher": {
-			"type": "string",
+	     	"type": "string",
 			"defaultValue": "openlogic",
 			"allowedValues": [
 				"Canonical",
@@ -232,7 +232,7 @@
                     "osDisk": {
                         "name": "[concat('fe-', copyIndex(), '-osdisk')]",
                         "vhd": {
-                            "uri": "[concat('http://', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]), '.blob.core.windows.net/', 'vhds', '/',  concat('fe', '-', copyIndex()), '-osdisk.vhd') ]"
+                            "uri": "[concat('http://', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]), 'blob.core.chinacloudapi.cn/', 'vhds', '/',  concat('fe', '-', copyIndex()), '-osdisk.vhd') ]"
                         },
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
