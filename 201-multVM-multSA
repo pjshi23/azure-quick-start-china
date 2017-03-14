@@ -1,0 +1,152 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "type": "string",
+            "defaultValue": "chgeuer",
+            "metadata": { "description": "Admin user name for the Virtual Machines." }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": { "description": "Admin password for the Virtual Machines." }
+        },
+        "deploymentName": {
+            "type": "string",
+            "defaultValue": "hjds",
+            "metadata": { "description": "Prefix for all names like storage accounts, etc." }
+        }
+    },
+    "variables": {
+        "vnetname": "[concat(parameters('deploymentName'),'-vnet')]",
+        "storageAccountNamePrefix": "[toLower(replace(parameters('deploymentName'),'-',''))]",
+        "storageAccountNames": {
+            "frontend": "[concat(variables('storageAccountNamePrefix'), 'fe')]"
+        },
+        "instanceCount": {
+            "frontend": 7
+        },
+        "math": {
+            "modulo2": [ "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1" ],
+            "modulo3": [ "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2" ]
+        }
+    },
+    "resources": [
+
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "name": "[variables('vnetname')]",
+            "tags": { "displayName": "Virtual Network" },
+            "properties": {
+                "addressSpace": { "addressPrefixes": [ "10.0.0.0/16" ] },
+                "subnets": [
+                    {
+                        "name": "subnet-fe",
+                        "properties": { "addressPrefix": "10.0.0.0/24" }
+                    }
+                ]
+            }
+        },
+
+        {
+            "type": "Microsoft.Compute/availabilitySets",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "name": "availabilityset-fe",
+            "tags": { "displayName": "Availability Set Frontend" }
+        },
+
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "name": "[concat('nic-fe-', copyIndex())]",
+            "tags": { "displayName": "Frontend - Network Interface Cards" },
+            "copy": {
+                "name": "frontendNicCopy",
+                "count": "[variables('instanceCount').frontend]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Network/virtualNetworks/', variables('vnetname'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "[concat('ipconfig-fe-', copyIndex())]",
+                        "properties": {
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "[concat('10.0.0.', copyIndex(10))]",
+                            "subnet": {
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks',variables('vnetname')), '/subnets/', 'subnet-fe')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "name": "[concat('fe', '-', copyIndex())]",
+            "tags": { "displayName": "Frontend - Virtual Machines" },
+            "copy": {
+                "name": "frontendNodeVMCopy",
+                "count": "[variables('instanceCount').frontend]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Compute/availabilitySets/', 'availabilityset-fe')]",
+                "[concat('Microsoft.Storage/storageAccounts/', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]))]",
+                "[concat('Microsoft.Network/networkInterfaces/', concat('nic-fe-', copyIndex()))]"
+            ],
+            "properties": {
+                "hardwareProfile": { "vmSize": "Standard_A0" },
+                "networkProfile": { "networkInterfaces": [ { "id": "[resourceId('Microsoft.Network/networkInterfaces', concat('nic-fe-', copyIndex()))]" } ] },
+                "availabilitySet": { "id": "[resourceId('Microsoft.Compute/availabilitySets', 'availabilityset-fe')]" },
+                "osProfile": {
+                    "computerName": "[concat('fe-', copyIndex())]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": "false"
+                    }
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "Canonical",
+                        "offer": "UbuntuServer",
+                        "sku": "14.04.3-LTS",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "[concat('fe-', copyIndex(), '-osdisk')]",
+                        "vhd": {
+                            "uri": "[concat('http://', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]), '.blob.core.chinacloudapi.cn/', 'vhds', '/',  concat('fe', '-', copyIndex()), '-osdisk.vhd') ]"
+                        },
+                        "caching": "ReadWrite",
+                        "createOption": "FromImage"
+                    }
+                }
+            }
+        },
+
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": { "accountType": "Standard_LRS" },
+            "name": "[concat(variables('storageAccountNames').frontend, '0')]",
+            "tags": { "displayName": "StorageAccount FrontEnd 0" }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": { "accountType": "Standard_LRS" },
+            "name": "[concat(variables('storageAccountNames').frontend, '1')]",
+            "tags": { "displayName": "StorageAccount FrontEnd 1" }
+        }
+    ]
+}
