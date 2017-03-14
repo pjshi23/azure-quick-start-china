@@ -38,6 +38,16 @@
 			"description": "New CentOS/UbuntuServer Image Offer"
 			}
 		},
+		"instanceCount": {
+            "type": "int",
+			"defaultValue": "7",
+			"minValue": 2,
+			"maxValue": 100,
+			      "metadata": {
+			"description": "Number of VMs to deploy, limit 5 since this sample is using a single storage account"
+			}
+
+        },
 		"imageSku": {
 		  "type": "string",
 		  "defaultValue": "7.2",
@@ -133,9 +143,7 @@
         "storageAccountNames": {
             "frontend": "[concat(variables('storageAccountNamePrefix'), 'fe')]"
         },
-        "instanceCount": {
-            "frontend": 7
-        },
+
         "math": {
             "modulo2": [ "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1" ],
             "modulo3": [ "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2" ]
