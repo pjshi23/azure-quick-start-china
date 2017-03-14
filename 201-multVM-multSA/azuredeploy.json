@@ -125,6 +125,7 @@
         "description": "Size of the  node."
       }
     },
+    },
 		
     "variables": {
         "vnetname": "[concat(parameters('deploymentName'),'-vnet')]",
