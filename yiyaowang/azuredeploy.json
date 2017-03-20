@@ -193,10 +193,9 @@
                     {
                         "name": "[concat('ipconfig-fe-', copyIndex())]",
                         "properties": {
-                            "privateIPAllocationMethod": "Static",
-                            "privateIPAddress": "[concat('10.0.0.', copyIndex(4))]",
+                            "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
-                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks',variables('vnetname')), '/subnets/', 'subnet-fe')]"
+								"id": "[variables('subnetRef')]"
                             }
                         }
                     }
