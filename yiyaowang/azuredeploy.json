@@ -1,0 +1,275 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "type": "string",
+            "defaultValue": "stan",
+            "metadata": { "description": "Admin user name for the Virtual Machines." }
+        },
+		"sshKeyData": {
+			"type": "string",
+			"metadata": {
+			"description": "SSH rsa public key file as a string."
+			}
+		},
+        "deploymentName": {
+            "type": "string",
+            "defaultValue": "stanpeng",
+            "metadata": { "description": "Prefix for all names like storage accounts, etc." }
+        },
+		"existingVirtualNetworkName": {
+			"type": "string",
+			"metadata": {
+			"description": "Name of the existing VNET"
+			}
+		},
+		"existingVirtualNetworkResourceGroup": {
+			"type": "string",
+			"metadata": {
+			"description": "Name of the existing VNET resource group"
+			}
+		},
+		"subnetName": {
+			"type": "string",
+			"metadata": {
+			"description": "Name of the subnet in the virtual network you want to use"
+			}
+		},
+		"imagePublisher": {
+			"type": "string",
+			"defaultValue": "openlogic",
+			"allowedValues": [
+				"Canonical",
+				"openlogic"
+			],
+			"metadata": {
+				"description": "openlogic/Canonical are the respective CentOS/Ubuntu Distributor in Azure Market Place"
+			}
+		},
+		"imageOffer": {
+			"type": "string",
+			"defaultValue": "CentOS",
+			"allowedValues": [
+				"CentOS",
+				"UbuntuServer"
+		],
+			"metadata": {
+			"description": "New CentOS/UbuntuServer Image Offer"
+			}
+		},
+		"instanceCount": {
+            "type": "int",
+			"defaultValue": "7",
+			"minValue": 2,
+			"maxValue": 30,
+			      "metadata": {
+			"description": "Number of VMs to deploy, limit 5 since this sample is using a single storage account"
+			}
+
+        },
+		"imageSku": {
+		  "type": "string",
+		  "defaultValue": "6.8",
+		  "allowedValues": [
+			"16.04.0-LTS",
+			"6.8",
+			"7.1",
+			"7.2"
+		  ],
+		  "metadata": {
+			"description": "P.S: OpenLogic CentOS version to use **docker usage Only for 7.1/7.2 kernels 3.10 and above **"
+		  }
+		},
+		"nodeSize": {
+			  "type": "string",
+			  "allowedValues": [
+				"Standard_DS1",
+				"Basic_A0",
+				"Basic_A1",
+				"Basic_A2",
+				"Basic_A3",
+				"Basic_A4",
+				"Standard_A0",
+				"Standard_A1",
+				"Standard_A10",
+				"Standard_A11",
+				"Standard_A2",
+				"Standard_A3",
+				"Standard_A4",
+				"Standard_A5",
+				"Standard_A6",
+				"Standard_A7",
+				"Standard_A8",
+				"Standard_A9",
+				"Standard_D1",
+				"Standard_D11",
+				"Standard_D11_v2",
+				"Standard_D12",
+				"Standard_D12_v2",
+				"Standard_D13",
+				"Standard_D13_v2",
+				"Standard_D14",
+				"Standard_D14_v2",
+				"Standard_D15_v2",
+				"Standard_D1_v2",
+				"Standard_D2",
+				"Standard_D2_v2",
+				"Standard_D3",
+				"Standard_D3_v2",
+				"Standard_D4",
+				"Standard_D4_v2",
+				"Standard_D5_v2",
+				"Standard_DS1",
+				"Standard_DS11",
+				"Standard_DS11_v2",
+				"Standard_DS12",
+				"Standard_DS12_V2",
+				"Standard_DS12_v2",
+				"Standard_DS13",
+				"Standard_DS13_v2",
+				"Standard_DS14",
+				"Standard_DS14_v2",
+				"Standard_DS15_v2",
+				"Standard_DS1_v2",
+				"Standard_DS2",
+				"Standard_DS2_v2",
+				"Standard_DS3",
+				"Standard_DS3_v2",
+				"Standard_DS4",
+				"Standard_DS4_v2",
+				"Standard_DS5_v2",
+				"Standard_G1",
+				"Standard_G2",
+				"Standard_G3",
+				"Standard_G4",
+				"Standard_G5",
+				"Standard_GS1",
+				"Standard_GS2",
+				"Standard_GS3",
+				"Standard_GS4",
+				"Standard_GS5"
+      ],
+      "defaultValue": "Standard_D1_v2",
+      "metadata": {
+        "description": "Size of the  node."
+      }
+    },
+
+    },
+    "variables": {
+        "storageAccountNamePrefix": "[toLower(replace(parameters('deploymentName'),'-',''))]",
+        "storageAccountNames": {
+            "frontend": "[concat(variables('storageAccountNamePrefix'), 'fe')]"
+        },
+		"vnetID": "[resourceId(parameters('existingVirtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('existingVirtualNetworkName'))]",
+		"subnetRef": "[concat(variables('vnetID'),'/subnets/', parameters('subnetName'))]",
+
+        "math": {
+            "modulo2": [ "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1", "0", "1" ],
+            "modulo3": [ "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2", "0", "1", "2" ]
+        }
+    },
+    "resources": [
+
+
+
+        {
+            "type": "Microsoft.Compute/availabilitySets",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "name": "availabilityset-fe",
+            "tags": { "displayName": "Availability Set Frontend" }
+        },
+
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "name": "[concat('nic-fe-', copyIndex())]",
+            "tags": { "displayName": "Frontend - Network Interface Cards" },
+            "copy": {
+                "name": "frontendNicCopy",
+                "count": "[parameters('instanceCount')]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Network/virtualNetworks/', variables('vnetID'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "[concat('ipconfig-fe-', copyIndex())]",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+							"subnet": {
+								"id": "[variables('subnetRef')]"
+							}                        
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "name": "[concat('fe', '-', copyIndex())]",
+            "tags": { "displayName": "Frontend - Virtual Machines" },
+            "copy": {
+                "name": "frontendNodeVMCopy",
+                "count": "[parameters('instanceCount')]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Compute/availabilitySets/', 'availabilityset-fe')]",
+                "[concat('Microsoft.Storage/storageAccounts/', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]))]",
+                "[concat('Microsoft.Network/networkInterfaces/', concat('nic-fe-', copyIndex()))]"
+            ],
+            "properties": {
+                "hardwareProfile": { "vmSize": "[parameters('nodeSize')]" },
+                "networkProfile": { "networkInterfaces": [ { "id": "[resourceId('Microsoft.Network/networkInterfaces', concat('nic-fe-', copyIndex()))]" } ] },
+                "availabilitySet": { "id": "[resourceId('Microsoft.Compute/availabilitySets', 'availabilityset-fe')]" },
+                "osProfile": {
+                    "computerName": "[concat('fe-', copyIndex())]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": "false"
+                    }
+                },
+                "storageProfile": {
+                    "imageReference": {						
+						"publisher": "[parameters('imagePublisher')]",
+						"offer": "[parameters('imageOffer')]",
+						"sku": "[parameters('imageSku')]",
+						"version": "latest"
+
+                    },
+                    "osDisk": {
+                        "name": "[concat('fe-', copyIndex(), '-osdisk')]",
+                        "vhd": {
+                            "uri": "[concat('http://', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]), '.blob.core.chinacloudapi.cn/', 'vhds', '/',  concat('fe', '-', copyIndex()), '-osdisk.vhd') ]"
+                        },
+                        "caching": "ReadWrite",
+                        "createOption": "FromImage"
+                    }
+                }
+            }
+        },
+
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": { "accountType": "Standard_LRS" },
+            "name": "[concat(variables('storageAccountNames').frontend, '0')]",
+            "tags": { "displayName": "StorageAccount FrontEnd 0" }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": { "accountType": "Standard_LRS" },
+            "name": "[concat(variables('storageAccountNames').frontend, '1')]",
+            "tags": { "displayName": "StorageAccount FrontEnd 1" }
+        }
+    ]
+}
