@@ -230,10 +230,17 @@
                 "osProfile": {
                     "computerName": "[concat('fe-', copyIndex())]",
                     "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]",
                     "linuxConfiguration": {
-                        "disablePasswordAuthentication": "false"
+                        "disablePasswordAuthentication": "True"
+						"ssh": {
+							"publicKeys": [
+							{
+								"keyData": "[parameters('sshKeyData')]"
+							}
+							]
+					
                     }
+					}
                 },
                 "storageProfile": {
                     "imageReference": {						
