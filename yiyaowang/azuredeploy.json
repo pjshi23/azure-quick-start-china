@@ -230,8 +230,8 @@
 						"ssh": {
 							"publicKeys": [
 							{
-							    "path": "[variables('sshKeyPath')]",
-								"keyData": "[parameters('sshKeyData')]"
+							  "path": "[variables('sshKeyPath')]",
+							  "keyData": "[parameters('sshKeyData')]"
 							}
 							]
 					
