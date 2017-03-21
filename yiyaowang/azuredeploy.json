@@ -207,7 +207,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2015-05-01-preview",
             "location": "[resourceGroup().location]",
-            "name": "[concat('fe', '-', copyIndex())]",
+            "name": "[concat(parameters('dpname'),'-',copyIndex())]",
             "tags": { "displayName": "Frontend - Virtual Machines" },
             "copy": {
                 "name": "frontendNodeVMCopy",
