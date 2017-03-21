@@ -216,14 +216,14 @@
             "dependsOn": [
                 "[concat('Microsoft.Compute/availabilitySets/', 'availabilityset-fe')]",
                 "[concat('Microsoft.Storage/storageAccounts/', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]))]",
-                "[concat('Microsoft.Network/networkInterfaces/', concat('nic-fe-', copyIndex()))]"
+                "[concat('Microsoft.Network/networkInterfaces/', concat(parameters('dpname'),'-',copyIndex())]"
             ],
             "properties": {
                 "hardwareProfile": { "vmSize": "[parameters('nodeSize')]" },
-                "networkProfile": { "networkInterfaces": [ { "id": "[resourceId('Microsoft.Network/networkInterfaces', concat('nic-fe-', copyIndex()))]" } ] },
+                "networkProfile": { "networkInterfaces": [ { "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('dpname'),'-',copyIndex()))]" } ] },
                 "availabilitySet": { "id": "[resourceId('Microsoft.Compute/availabilitySets', 'availabilityset-fe')]" },
                 "osProfile": {
-                    "computerName": "[concat('fe-', copyIndex())]",
+                    "computerName": "[concat(parameters('dpname'),'-',copyIndex())]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "linuxConfiguration": {
                         "disablePasswordAuthentication": "True",
