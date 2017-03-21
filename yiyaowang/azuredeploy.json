@@ -216,7 +216,7 @@
             "dependsOn": [
                 "[concat('Microsoft.Compute/availabilitySets/', 'availabilityset-fe')]",
                 "[concat('Microsoft.Storage/storageAccounts/', concat(variables('storageAccountNames').frontend, variables('math').modulo2[copyIndex()]))]",
-                "[concat('Microsoft.Network/networkInterfaces/', concat(parameters('dpname'),'-',copyIndex())]"
+                "[concat('Microsoft.Network/networkInterfaces/', concat(parameters('dpname'),'-',copyIndex()))]"
             ],
             "properties": {
                 "hardwareProfile": { "vmSize": "[parameters('nodeSize')]" },
