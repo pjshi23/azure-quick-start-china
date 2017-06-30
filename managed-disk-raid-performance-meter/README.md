@@ -1,6 +1,6 @@
 # Azure managed disk RAID performance meter
 
-<a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpjshi23%2Fazure-quick-start-china%2F%2Fmaster%2Fmanaged-disk-raid-performance-meter%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpjshi23%2Fazure-quick-start-china%2Fmaster%2Fmanaged-disk-raid-performance-meter%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
